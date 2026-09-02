@@ -1,13 +1,11 @@
 import numpy as np
 
 def k_means_assignment(points: list, centroids: list) -> np.ndarray:
-    P = np.asarray(points, dtype=np.float64)
-    C = np.asarray(centroids, dtype=np.float64)
-    
-    if P.ndim == 1:
-        P = P.reshape(-1, 1)
-    if C.ndim == 1:
-        C = C.reshape(-1, 1)
-        
-    distances = np.sum((P[:, None, :] - C[None, :, :]) ** 2, axis=-1)
-    return np.argmin(distances, axis=-1).tolist()
+    p = np.asarray(points, dtype = int)
+    c = np.asarray(centroids, dtype = int) 
+    if p.ndim == 1:
+        p = p.reshape(-1, 1)
+    if c.ndim == 1:
+        p = p.reshape(-1, 1)
+    dist = np.sum((p[:, None, :] - c[None, :, :])**2, axis = -1)
+    return np.argmin(dist, axis = -1).tolist()
